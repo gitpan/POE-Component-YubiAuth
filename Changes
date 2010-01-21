@@ -1,5 +1,9 @@
 Revision history for POE-Component-YubiAuth
 
+0.02    2010-01-21
+        * Allow use of API key to sign verification requests
+	* Allow passing of callback data to callbacks, to track reqests
+
 0.01    2010-01-21
         First version, released on an unsuspecting world.
 
