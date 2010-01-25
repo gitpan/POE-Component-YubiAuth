@@ -1,5 +1,8 @@
 Revision history for POE-Component-YubiAuth
 
+0.03    2010-01-25
+        * Base64 EOL fix
+
 0.02    2010-01-21
         * Allow use of API key to sign verification requests
 	* Allow passing of callback data to callbacks, to track reqests

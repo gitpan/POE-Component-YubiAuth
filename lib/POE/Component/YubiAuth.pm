@@ -9,7 +9,7 @@ POE::Component::YubiAuth - Use Yubico Web Service API to check One Time Password
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 =head1 SYNOPSIS
@@ -136,7 +136,7 @@ sub spawn {
                 my ($otp, $callback, $callback_data) = @_[ARG0, ARG1, ARG2];
                 my $params = "id=$heap->{'id'}&otp=$otp&timestamp=1";
                 if (my $key = $heap->{'key'}) {
-                    $params .= '&h=' . encode_base64(hmac_sha1($params, decode_base64($key)));
+                    $params .= '&h=' . encode_base64(hmac_sha1($params, decode_base64($key)), '');
                 }
                 my $req = HTTP::Request->new(GET =>
                     "http://api.yubico.com/wsapi/verify?$params"
