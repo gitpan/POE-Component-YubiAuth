@@ -1,5 +1,8 @@
 Revision history for POE-Component-YubiAuth
 
+0.04	2010-01-27
+	* URI escape Base64 data
+
 0.03    2010-01-25
         * Base64 EOL fix
 

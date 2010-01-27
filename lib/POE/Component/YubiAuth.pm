@@ -9,7 +9,7 @@ POE::Component::YubiAuth - Use Yubico Web Service API to check One Time Password
 
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 
 =head1 SYNOPSIS
@@ -109,6 +109,7 @@ use POE::Session;
 use POE::Component::Client::HTTP;
 use HTTP::Request;
 use MIME::Base64;
+use URI::Escape qw(uri_escape);
 use Digest::HMAC_SHA1 qw(hmac_sha1);
 
 sub spawn {
@@ -134,13 +135,12 @@ sub spawn {
             verify => sub {
                 my ($kernel, $sender, $heap) = @_[KERNEL, SENDER, HEAP];
                 my ($otp, $callback, $callback_data) = @_[ARG0, ARG1, ARG2];
-                my $params = "id=$heap->{'id'}&otp=$otp&timestamp=1";
+                my $params = "id=$heap->{'id'}&otp=" . uri_escape($otp) . '&timestamp=1';
                 if (my $key = $heap->{'key'}) {
-                    $params .= '&h=' . encode_base64(hmac_sha1($params, decode_base64($key)), '');
+                    $params .= '&h=' .
+                        uri_escape(encode_base64(hmac_sha1($params, decode_base64($key)), ''));
                 }
-                my $req = HTTP::Request->new(GET =>
-                    "http://api.yubico.com/wsapi/verify?$params"
-                );
+                my $req = HTTP::Request->new(GET => "http://api.yubico.com/wsapi/verify?$params");
                 $kernel->post('_yubi_ua', 'request', '_verify_cb', $req,
                               [$sender, $callback, $callback_data]);
             },
