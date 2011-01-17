@@ -5,11 +5,11 @@ use strict;
 
 =head1 NAME
 
-POE::Component::YubiAuth - Use Yubico Web Service API to check One Time Passwords
+POE::Component::YubiAuth - Use Yubico Web Service API to verify YubiKey one time passwords.
 
 =cut
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 
 =head1 SYNOPSIS

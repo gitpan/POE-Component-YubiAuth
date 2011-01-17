@@ -1,5 +1,8 @@
 Revision history for POE-Component-YubiAuth
 
+0.05	2011-01-17
+	Make description format consistent across modules.
+
 0.04	2010-01-27
 	* URI escape Base64 data
 
