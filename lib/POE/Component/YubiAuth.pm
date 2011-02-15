@@ -9,7 +9,7 @@ POE::Component::YubiAuth - Use Yubico Web Service API to verify YubiKey one time
 
 =cut
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 
 =head1 SYNOPSIS
