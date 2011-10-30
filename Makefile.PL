@@ -17,6 +17,8 @@ WriteMakefile(
         'POE::Component::Client::HTTP' => 0,
         'HTTP::Request' => 0,
         'Digest::HMAC_SHA1' => 0,
+        'String::Random' => 0,
+        'List::Util' => 0,
     },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'POE-Component-YubiAuth-*' },
